@@ -9,6 +9,8 @@ from tencentcloud.common import credential
 from tencentcloud.common.exception.tencent_cloud_sdk_exception import TencentCloudSDKException
 from tencentcloud.dnspod.v20210323 import dnspod_client, models
 
+DEFAULT_DNSPOD_REMARK = "GitHub-cf2dns"
+
 class QcloudApiv3():
     def __init__(self, SECRETID, SECRETKEY):
         self.SecretId = SECRETID
@@ -81,7 +83,8 @@ class QcloudApiv3():
             "RecordType": record_type,
             "RecordLine": line,
             "Value": value,
-            "ttl": ttl
+            "ttl": ttl,
+            "Remark": DEFAULT_DNSPOD_REMARK
         }
         req.from_json_string(json.dumps(params))
 
@@ -102,7 +105,8 @@ class QcloudApiv3():
             "RecordLine": line,
             "Value": value,
             "TTL": ttl,
-            "RecordId": record_id
+            "RecordId": record_id,
+            "Remark": DEFAULT_DNSPOD_REMARK
         }
         req.from_json_string(json.dumps(params))
 
